@@ -183,6 +183,20 @@
                             <span class="whitespace-nowrap transition-all duration-200" :class="sidebarCollapsed ? 'md:hidden' : ''">Clientes</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('historial.index') }}"
+                            title="Historial"
+                            :class="sidebarCollapsed ? 'md:justify-center md:px-0' : ''"
+                            class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200
+                           {{ request()->routeIs('historial.*') ? 'bg-white/20 shadow-lg' : 'hover:bg-indigo-700/50' }}">
+                            <span class="w-5 h-5">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                            <span class="whitespace-nowrap transition-all duration-200" :class="sidebarCollapsed ? 'md:hidden' : ''">Historial</span>
+                        </a>
+                    </li>
                     @if(auth()->user()->esAdmin())
                     <li>
                         <a href="{{ route('tecnicos.index') }}"

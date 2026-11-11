@@ -138,7 +138,7 @@
         <table class="w-full">
             <thead class="bg-gray-50 border-b border-gray-200">
                 <tr>
-                    <th class="text-left px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Folio</th>
+                    
                     <th class="text-left px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Cliente</th>
                     <th class="text-left px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Equipo</th>
                     <th class="text-left px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Nivel</th>
@@ -167,8 +167,7 @@
 
                 <tr class="hover:bg-purple-50/30 transition-colors">
 
-                    {{-- Folio de la orden --}}
-                    <td class="px-6 py-4 font-semibold text-[#2D1B69]">{{ $orden->folio }}</td>
+                    
 
                     {{-- Nombre del cliente --}}
                     <td class="px-6 py-4 text-gray-700">{{ $orden->cliente->nombre }}</td>
@@ -230,7 +229,7 @@
 
                 @empty
                 <tr>
-                    <td colspan="8" class="px-6 py-12 text-center text-gray-400">
+                                        <td colspan="7" class="px-6 py-12 text-center text-gray-400">
                         <div class="flex flex-col items-center gap-2">
                             <svg class="w-9 h-9 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <use href="/sprite.svg#mailbox" />

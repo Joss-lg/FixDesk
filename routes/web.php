@@ -57,6 +57,14 @@ Route::middleware(['auth', 'subscription.active'])->group(function () {
     // Notificaciones (solo admin)
     Route::post('/notificaciones/{id}/leida', [NotificacionController::class, 'marcarLeida'])->name('notificaciones.leida');
     Route::post('/notificaciones/leer-todas', [NotificacionController::class, 'marcarTodasLeidas'])->name('notificaciones.leer-todas');
-});
+
+    // ── Historial ─────────────────────────────────────────────────
+Route::get('/historial', [App\Http\Controllers\HistorialController::class, 'index'])
+    ->name('historial.index');
+
+Route::get('/historial/{reparacion}', [App\Http\Controllers\HistorialController::class, 'show'])
+    ->name('historial.show');
+    
+    });
 
 require __DIR__ . '/auth.php';

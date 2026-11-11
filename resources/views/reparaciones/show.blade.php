@@ -310,7 +310,7 @@
         </form>
     </div>
 
-    {{-- Escalar nivel --}}
+   {{-- Escalar nivel --}}
     <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
         <div class="border-b border-gray-100 bg-gradient-to-r from-[#7C3AED]/5 to-[#EC4899]/5 px-4 py-4 md:px-6">
             <h2 class="text-lg font-semibold text-[#2D1B69] flex items-center gap-2">
@@ -342,7 +342,7 @@
                         @foreach($niveles as $nivel)
                         @if($nivel->id != $reparacion->nivel_id)
                         <option value="{{ $nivel->id }}">
-                            Nivel {{ $nivel->nivel }} — {{ $nivel->nombre }} (SLA: {{ $nivel->horas_sla }}h)
+                            Nivel {{ $nivel->nivel }} — {{ $nivel->nombre }}
                         </option>
                         @endif
                         @endforeach

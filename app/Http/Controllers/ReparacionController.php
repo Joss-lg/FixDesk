@@ -272,14 +272,13 @@ class ReparacionController extends Controller
             'motivo'           => $data['motivo'],
         ]);
 
-        // Actualizar nivel y recalcular hora límite desde hora de ingreso
+        // Actualizar únicamente el nivel, manteniendo la hora límite intacta e independiente
         $reparacion->update([
-            'nivel_id'    => $nivelNuevo->id,
-            'hora_limite' => $reparacion->hora_ingreso->copy()->addHours($nivelNuevo->horas_sla),
+            'nivel_id' => $nivelNuevo->id,
         ]);
 
         return redirect()->route('reparaciones.show', $reparacion)
-            ->with('success', "Nivel escalado a {$nivelNuevo->nombre}. Tiempo límite recalculado.");
+            ->with('success', "Nivel escalado a {$nivelNuevo->nombre} exitosamente.");
     }
 
     // ── Autorización de taller ────────────────────────────────
