@@ -20,19 +20,10 @@
         <p class="text-gray-500 text-sm mt-1">Canceladas</p>
     </article>
 
-    {{-- Entregadas con retardo --}}
+       {{-- Órdenes esperando pieza --}}
     <article class="rounded-2xl border border-amber-200 bg-white p-4 shadow-md md:p-6">
-        <div class="flex items-start justify-between">
-            <div>
-                <p class="text-3xl font-bold text-amber-600 md:text-4xl">{{ $stats['entregadas_retardo'] }}</p>
-                <p class="text-gray-500 text-sm mt-1">Entregadas con retardo</p>
-            </div>
-            @if($stats['entregadas'] > 0)
-            <span class="mt-1 rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-700">
-                {{ round($stats['entregadas_retardo'] / $stats['entregadas'] * 100) }}%
-            </span>
-            @endif
-        </div>
+        <p class="text-3xl font-bold text-amber-600 md:text-4xl">{{ $stats['esperando_pieza'] }}</p>
+        <p class="text-gray-500 text-sm mt-1">Esperando pieza</p>
     </article>
 
 </section>

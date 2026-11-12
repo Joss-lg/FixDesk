@@ -225,13 +225,16 @@ class ReparacionController extends Controller
         $estadoAnterior = $reparacion->estado;
         $reparacion->update($data);
 
-        // Al marcar como Reparado: registrar hora de fin y notificar al cliente
+                // Al marcar como Reparado: notificar al cliente
         if (isset($data['estado']) && $data['estado'] === 'Reparado' && $estadoAnterior !== 'Reparado') {
-            $reparacion->update(['hora_fin' => now()]);
-
             if ($reparacion->cliente->email) {
                 Mail::to($reparacion->cliente->email)->send(new ReparacionListaMail($reparacion));
             }
+        }
+
+        // Al marcar como Entregado: registrar fecha y hora exacta de entrega
+        if (isset($data['estado']) && $data['estado'] === 'Entregado' && $estadoAnterior !== 'Entregado') {
+            $reparacion->update(['hora_fin' => now()]);
         }
 
         // Redirigir según el origen de la petición

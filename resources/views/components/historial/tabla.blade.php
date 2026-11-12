@@ -53,7 +53,7 @@ $estadoColors = [
                     <th class="whitespace-nowrap px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-purple-200">Nivel</th>
                     <th class="whitespace-nowrap px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-purple-200">Estado</th>
                     <th class="whitespace-nowrap px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-purple-200">Técnico</th>
-                    <th class="whitespace-nowrap px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-purple-200">Fecha límite</th>
+                                        <th class="whitespace-nowrap px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-purple-200">Fecha de entrega</th>
                     <th class="whitespace-nowrap px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-purple-200">Acciones</th>
                 </tr>
             </thead>
@@ -104,14 +104,15 @@ $estadoColors = [
                         {{ $rep->tecnico->name ?? '—' }}
                     </td>
 
-                    {{-- Fecha límite --}}
+                                        {{-- Fecha de entrega: se registra automáticamente al marcar como Entregado --}}
                     <td class="whitespace-nowrap px-6 py-4">
-                        @if($rep->hora_limite)
-                            <span class="{{ $rep->estaRetrasada() ? 'font-medium text-red-600' : 'text-gray-600' }}">
-                                {{ $rep->hora_limite->format('d/m/Y H:i') }}
-                            </span>
+                        @if($rep->estado === 'Entregado' && $rep->hora_fin)
+                            <div class="text-sm text-gray-700">{{ $rep->hora_fin->format('d/m/Y') }}</div>
+                            <div class="text-xs text-gray-400">{{ $rep->hora_fin->format('H:i') }}</div>
+                        @elseif($rep->estado === 'Cancelado')
+                            <span class="text-xs text-rose-400">Cancelada</span>
                         @else
-                            <span class="text-gray-400">—</span>
+                            <span class="text-gray-400 text-xs">Pendiente</span>
                         @endif
                     </td>
 

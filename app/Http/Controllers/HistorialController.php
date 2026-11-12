@@ -77,15 +77,11 @@ class HistorialController extends Controller
         if ($desde) $statsQuery->where('created_at', '>=', $desde);
         if ($hasta) $statsQuery->where('created_at', '<=', $hasta . ' 23:59:59');
 
-        $stats = [
-            'entregadas'         => (clone $statsQuery)->where('estado', 'Entregado')->count(),
-            'canceladas'         => (clone $statsQuery)->where('estado', 'Cancelado')->count(),
-            'entregadas_retardo' => (clone $statsQuery)
-                ->where('estado', 'Entregado')
-                ->whereColumn('hora_fin', '>', 'hora_limite')
-                ->whereNotNull('hora_limite')
-                ->count(),
-            'total'              => (clone $statsQuery)->count(),
+                $stats = [
+            'entregadas'      => (clone $statsQuery)->where('estado', 'Entregado')->count(),
+            'canceladas'      => (clone $statsQuery)->where('estado', 'Cancelado')->count(),
+            'esperando_pieza' => (clone $statsQuery)->where('estado', 'Esperando Pieza')->count(),
+            'total'           => (clone $statsQuery)->count(),
         ];
 
         $tecnicos = User::where('taller_id', $tallerId)
